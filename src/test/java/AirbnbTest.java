@@ -22,10 +22,7 @@ public class AirbnbTest {
 
     @Test
     public void abrirPaginaCesarTest() {
-
-
         webD.manage().window().maximize();
-
         webD.get("https://www.cesar.org.br/");
         Assertions.assertEquals("https://www.cesar.org.br/", webD.getCurrentUrl());
     }
@@ -57,6 +54,26 @@ public class AirbnbTest {
         search.sendKeys("tecnologia");
 
     }
+    @Test
+    public void inserindoDadosEmCampoDePesquisa2Test() {
+
+        webD.manage().window().maximize();
+        webD.get("https://www.cesar.org.br/");
+
+        WebElement search = webD.findElement(By.id("search-header"));
+        search.sendKeys("turismo");
+
+    }
+    @Test
+    public void inserindoDadosEmCampoDePesquisa3Test() {
+
+        webD.manage().window().maximize();
+        webD.get("https://www.cesar.org.br/");
+
+        WebElement search = webD.findElement(By.id("search-header"));
+        search.sendKeys("esporte");
+
+    }
 
     @Test
     public void moveElementEspecificadoTrueTest (){
@@ -68,6 +85,17 @@ public class AirbnbTest {
                 By.id("search-header"));
         actions.moveToElement(botao).perform();
         Assertions.assertTrue(webD.getPageSource().contains(botao.getAttribute("type")));
+    }
+    @Test
+    public void moveElementEspecificadoTrue2Test (){
+
+        webD.manage().window().maximize();
+        webD.get("https://www.cesar.org.br/");
+        Actions actions = new Actions(webD);
+        WebElement botao = webD.findElement(
+                By.id("search-header"));
+        actions.moveToElement(botao).perform();
+        Assertions.assertTrue(webD.getPageSource().contains(botao.getAttribute("id")));
     }
 
     @Test
